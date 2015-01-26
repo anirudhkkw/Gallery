@@ -26,12 +26,12 @@
 
 								newPhoto.save(function(err){
 									if(err){
-										console.err(err);	
+										console.log(err);	
 									}	  			  	
 								});  	
 							}
-
-
+							
+							console.log('Completed saving records');
 						});
 					});
 				}

@@ -8,6 +8,7 @@ router.post('/', function(req, res, next) {
 
 module.exports = router;
 
+// gets photo details and parses the result to get a nice formatted output
 function getPhotoDetails(photoId, photoSecretId, res){
 	var flickrObject = flickrHelper.initialiseFlickr();
 	var Flickr = flickrObject.Flickr;

@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
-
+//Gets location of the photo
 function getPhotoLocation(photoId, photoSecretId, res){	
 	var flickrObject = flickr.initialiseFlickr();
 	var Flickr = flickrObject.Flickr;

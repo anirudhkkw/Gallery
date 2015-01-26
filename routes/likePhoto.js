@@ -4,10 +4,15 @@
 
 	router.post('/', function(req, res, next) {
 		try{			
-			UpdatePhoto(req.body);
+			if(req.body.Like == "true"){
+				UpdatePhotoUpvotes(req.body);
+			}
+			else{
+				UpdatePhotoDownvotes(req.body);
+			}
 				
 		}catch(err){
-			console.error(err);
+			console.log(err);
 			res.send(500);
 		}
 
@@ -17,18 +22,18 @@
 	});
 
 	module.exports = router;
-
-	function UpdatePhoto(details){
+// method to update the upvotes 
+	function UpdatePhotoUpvotes(details){
 		
-		FlickrPhotos.findOne({PhotoId : details.PhotoId}, 'PhotoId Upvotes Downvotes', function(err, Photo){			
-			if(details.Like == "true"){				
-					Photo.Upvotes += 1;	
-				}
-				else{
-					Photo.Downvotes += 1;
-				}				
-				Photo.save();			
+		FlickrPhotos.findOne({PhotoId : details.PhotoId}, 'PhotoId Upvotes Downvotes', function(err, Photo){									
+		Photo.Upvotes += 1;								
+		Photo.save();			
 		});
 	}
-	
-	
+	// method to update the downvotes 
+	function UpdatePhotoDownvotes(details){
+			FlickrPhotos.findOne({PhotoId : details.PhotoId}, 'PhotoId Upvotes Downvotes', function(err, Photo){			
+			Photo.Downvotes += 1;
+			Photo.save();									
+		});
+	}

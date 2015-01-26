@@ -34,6 +34,8 @@ app.use('/likePhoto', likePhoto);
 app.use('/contact', contact);
 app.use('/photoInfo',photoInfo);
 app.use('/photoMap',photoMap);
+
+// Initialising the Database
 initialise.initialiseDb();
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

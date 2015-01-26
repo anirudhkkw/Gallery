@@ -39,6 +39,7 @@
               $(ele).attr('data-popoverVisible','true');
             }).fail(function(){
                 $(ele).attr('data-content','Error :(');
+                  $(ele).attr('data-popoverVisible','true');
                   $(ele).popover('show');                  
             });
             }

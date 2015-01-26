@@ -1,0 +1,73 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+      <script type="text/javascript" src="/javascripts/jquery-2.1.3.min.js"  ></script>
+      <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    
+  <script type="text/javascript" >
+        $(document).ready(function(){
+          
+          
+        });      
+        
+      </script>
+    </head>
+    <body>
+      <div class="Header">
+        <div class="logo">
+          <a href="/index" style="color: white; text-decoration: none;">Gallery</a>                  
+        </div>
+        <div class="menu">
+          <ul class="nav nav-pills">
+          <li role="presentation" ><a href="/index" class="menuItems">Photos</a></li>
+          <li role="presentation" class="active"><a href="#" class="menuItems">Contact</a></li>   
+          <li role="presentation"><a href="/photoMap" class="menuItems">Photo Map (new)</a></li>                 
+          </ul>
+        </div>
+      </div>
+      
+          <pre>
+          &lt!DOCTYPE Resume&gt
+          &lthtml&gt
+            &lthead&gt
+              &lttitle&gt Anirudh Vinod Kalkotwar&lt/title&gt              
+            &lt/head&gt
+            &ltbody&gt
+              &ltul class="Tech"&gt
+                &ltli&gtC#&lt/li&gt
+                &ltli&gtMSSQL&lt/li&gt
+                &ltli&gtMVC&lt/li&gt
+                &ltli&gtjQuery & js&lt/li&gt
+                &ltli&gtHTML & CSS&lt/li&gt
+                &ltli&gtSVN&lt/li&gt
+                &ltli&gt.Net&lt/li&gt
+                &ltli&gtC++&lt/li&gt
+                &ltli&gtC&lt/li&gt
+              &lt/ul&gt
+              &ltstrong&gt
+                &ltol&gt
+                  &ltli&gtI &lt3 Code&lt/li&gt
+                  &ltli&gtCurious&lt/li&gt
+                  &ltli&gtRelentless&lt/li&gt
+                  &ltli&gtExpressive <img src="http://rs2img.memecdn.com/life-as-a-programmer_o_1416999.jpg" />
+                  &lt/li&gt
+                &lt/ol&gt
+              &lt/strong&gt 
+              &ltfooter&gt
+                &ltp&gt
+                  So lets Work together and create some magic ;)
+                  <a href="https://www.flickr.com/photos/130836146@N03/16362252321" title="letsworktogether by Anirudh Kalkotwar, on Flickr"><img src="https://farm9.staticflickr.com/8577/16362252321_565a64d8ab_o.jpg" width="744" height="481" alt="letsworktogether"></a>
+                &lt/p&gt
+              &lt/footer&gt
+            &lt/body&gt
+          &lt/html&gt
+          </pre>
+      
+      
+      
+      
+    </body>
+
+  </html>

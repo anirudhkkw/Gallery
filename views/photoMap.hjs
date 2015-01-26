@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+  html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+  </style>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script type="text/javascript" src="/javascripts/jquery-2.1.3.min.js"  ></script>
+  <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  <script type="text/javascript" src="/javascripts/bootstrap.min.js"  ></script>
+  <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNwn-blSbu2G-mIWINOCkGAxAmNAsJYMM">
+  </script>
+  <script type="text/javascript">
+  var geocoder;
+  var map;
+  var marker = null;
+  var infowindow = new google.maps.InfoWindow(
+  {
+   size: new google.maps.Size(150,50)
+ });
+     // A function to create the marker and set up the event window function
+     function createMarker(latlng, name, html) {
+       var contentString = html;
+       var marker = new google.maps.Marker({
+         position: latlng,
+         map: map,
+         zIndex: Math.round(latlng.lat()*-100000)<<5
+       });
+       google.maps.event.addListener(marker, 'click', function() {
+         infowindow.setContent(contentString);
+         infowindow.open(map,marker);
+       });
+       google.maps.event.trigger(marker, 'click');
+       return marker;
+     }
+     function initialize() {
+      geocoder = new google.maps.Geocoder();
+
+
+
+      
+
+      var flickrLocationPhotos = "{{FlickrLocationPhotos}}";
+      if(flickrLocationPhotos == "false"){
+        var address = "{{location}}";
+        var failed = "{{failed}}"
+        if(failed == "true"){
+          alert('Sorry, no location was provided for this photo.');
+        }
+        var mapOptions = {             
+        zoom: 8,
+        center: new google.maps.LatLng(43.907787,-79.359741)
+      };
+        geocoder.geocode( { 'address': address}, function(results, status) {
+
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+      }
+      else{
+        var mapOptions = {             
+        zoom: 1,
+        center: new google.maps.LatLng(12.9667,77.5667)
+      };
+        map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+        google.maps.event.addListener(map, 'click', function() {
+       infowindow.close();
+       });
+       google.maps.event.addListener(map, 'click', function(event) {
+       //call function to create marker
+       if (marker) {
+       marker.setMap(null);
+       marker = null;
+       }
+
+       marker = createMarker(event.latLng, "name", "<a href='/index?Latitude="+event.latLng.k+"&Longitude="+event.latLng.D+"'>Photos</a>");
+        });
+      }
+      
+      
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div class="Header">
+      <div class="logo">
+          <a href="/index" style="color: white; text-decoration: none;">Gallery</a>                  
+        </div>
+      <div class="menu">
+        <ul class="nav nav-pills">
+          <li role="presentation"><a href="/index" class="menuItems">Photos</a></li>
+          <li role="presentation"><a href="/contact" class="menuItems">Contact</a></li>
+          <li role="presentation" class="active"><a href="#" class="menuItems">Photo Map (new)</a></li>          
+        </ul>
+      </div>
+    </div>      
+    <div id="map-canvas"></div>
+  </body>
+  </html>

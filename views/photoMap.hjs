@@ -69,7 +69,7 @@
       }
       else{
         var mapOptions = {             
-        zoom: 1,
+        zoom: 6,
         center: new google.maps.LatLng(12.9667,77.5667)
       };
         map = new google.maps.Map(document.getElementById('map-canvas'),

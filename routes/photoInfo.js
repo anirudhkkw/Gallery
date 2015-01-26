@@ -2,8 +2,7 @@ var express = require('express');
 var router = express.Router();
 var flickrHelper = require('../helper/helper.js');
 
-router.post('/', function(req, res, next) {	
-	console.log(req.body.PhotoId);
+router.post('/', function(req, res, next) {		
   getPhotoDetails(req.body.PhotoId,req.body.PhotoSecretId,res);
 });
 

@@ -10,7 +10,9 @@
 			pageNumber = 1;
 		}
 		else{
-			pageNumber = parseInt(pageNumber) + 1;
+			if(pageNumber < 25){
+				pageNumber = parseInt(pageNumber) + 1;	
+			}			
 		}	
 		if(req.query.Latitude !== undefined && req.query.Longitude !== undefined && req.query.Longitude != "false" && req.query.Latitude && "false"  ){
 			GetPhotosForLocation(res,req.query.Latitude,req.query.Longitude,req.query.pageNumber);

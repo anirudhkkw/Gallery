@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('BigTree:server');
+//var debug = require('debug')('BigTree:server');
 var http = require('http');
 
 /**

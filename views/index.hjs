@@ -8,13 +8,19 @@
         <script type="text/javascript" src="/javascripts/bootstrap.min.js"  ></script>
         <script type="text/javascript" src="/javascripts/lightview-3.4.0/js/spinners/spinners.min.js"></script>
         <script type="text/javascript" src="/javascripts/lightview-3.4.0/js/lightview/lightview.js"></script>
+        <script type="text/javascript" src="/javascripts/masonry.pkgd.min.js"></script>
         <link  rel='stylesheet' href="/stylesheets/lightview-3.4.0/css/lightview/lightview.css" />
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
         <script type="text/javascript" >
-        $(document).ready(function(){
-
-          
+        $(document).ready(function(){          
+          var $container = $('.divImagesContainer');
+          // initialize
+          $container.masonry({
+            columnWidth: 100,
+            gutter : 10,
+            itemSelector: '.divImage'
+          });
           $('.imageInfo').popover({trigger:'manual',placement:'auto',html : true});
 
           $('.imageInfo').click(function(){            
@@ -29,65 +35,65 @@
             }
             else{
               $.ajax({
-              type: "POST",
-              url : "photoInfo",
-              data : { PhotoId : $(this).attr('data-PhotoId'), PhotoSecretId : $(this).attr('data-PhotoSecretId') }
-            }).done(function(result){   
+                type: "POST",
+                url : "photoInfo",
+                data : { PhotoId : $(this).attr('data-PhotoId'), PhotoSecretId : $(this).attr('data-PhotoSecretId') }
+              }).done(function(result){   
 
-              $(ele).attr('data-content',result);
-              $(ele).popover('show');
-              $(ele).attr('data-popoverVisible','true');
-            }).fail(function(){
+                $(ele).attr('data-content',result);
+                $(ele).popover('show');
+                $(ele).attr('data-popoverVisible','true');
+              }).fail(function(){
                 $(ele).attr('data-content','Error :(');
                   $(ele).attr('data-popoverVisible','true');
                   $(ele).popover('show');                  
-            });
+                });
             }
             
           });
-          
-          
-            
-            
-            
-          
 
-          $(".likeButton").click(function(){   
-            var photoId = $(this).attr('data-PhotoId');       
-            $.ajax({
-              type: "POST",
-              url: "likePhoto",
-              data: { FarmId : $(this).attr('data-FarmId'), ServerId : $(this).attr('data-ServerId'), PhotoId : $(this).attr('data-PhotoId'), PhotoSecretId : $(this).attr('data-PhotoSecretId') , Like : true  }
-            }).done(function() {                  
-              var number = parseInt($($("p." + photoId + ".likeCount")[0]).html());
-              number = number + 1;
-              $($("p." + photoId + ".likeCount")[0]).html(number);
-               if($('.upvoteMsg').length == 0){
-                $(".secondHeader").prepend('<div class="alert alert-success alert-dismissible successMsg upvoteMsg" role="alert" style="margin-bottom: 0px; ">             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>             You have upvoted a photo successfully!           </div>')
-              }
-            }).fail(function(){
-              if($(".failureMsg").length == 0){                 $(".secondHeader").prepend('<div class="alert alert-danger alert-dismissible failureMsg " role="alert">             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>             Operation failed! Please contact the developer.           </div>');               }
-            });
-          });        
 
-          $(".dislikeButton").click(function(){   
-            var photoId = $(this).attr('data-PhotoId');       
-            $.ajax({
-              type: "POST",
-              url: "likePhoto",
-              data: { FarmId : $(this).attr('data-FarmId'), ServerId : $(this).attr('data-ServerId'), PhotoId : $(this).attr('data-PhotoId'), PhotoSecretId : $(this).attr('data-PhotoSecretId') , Like : false }
-            }).done(function() {                  
-              var number = parseInt($($("p." + photoId +".dislikeCount")[0]).html());
-              number = number + 1;
-              $($("p." + photoId+ ".dislikeCount")[0]).html(number);
-              if($('.downvoteMsg').length == 0){
-                $(".secondHeader").prepend('<div class="alert alert-success alert-dismissible successMsg downvoteMsg" role="alert" style="margin-bottom: 0px; ">             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>             You have downvoted a photo successfully!           </div>')
-              }
-            }).fail(function(Error){
-              if($(".failureMsg").length == 0){                 $(".secondHeader").prepend('<div class="alert alert-danger alert-dismissible failureMsg " role="alert">             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>             Operation failed! Please contact the developer.           </div>');               }
-            });
-          });
-        });      
+
+
+
+
+
+      $(".likeButton").click(function(){   
+        var photoId = $(this).attr('data-PhotoId');       
+        $.ajax({
+          type: "POST",
+          url: "likePhoto",
+          data: { FarmId : $(this).attr('data-FarmId'), ServerId : $(this).attr('data-ServerId'), PhotoId : $(this).attr('data-PhotoId'), PhotoSecretId : $(this).attr('data-PhotoSecretId') , Like : true  }
+        }).done(function() {                  
+          var number = parseInt($($("p." + photoId + ".likeCount")[0]).html());
+          number = number + 1;
+          $($("p." + photoId + ".likeCount")[0]).html(number);
+          if($('.upvoteMsg').length == 0){
+            $(".secondHeader").prepend('<div class="alert alert-success alert-dismissible successMsg upvoteMsg" role="alert" style="margin-bottom: 0px; ">             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>             You have upvoted a photo successfully!           </div>')
+          }
+        }).fail(function(){
+          if($(".failureMsg").length == 0){                 $(".secondHeader").prepend('<div class="alert alert-danger alert-dismissible failureMsg " role="alert">             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>             Operation failed! Please contact the developer.           </div>');               }
+        });
+      });        
+
+      $(".dislikeButton").click(function(){   
+        var photoId = $(this).attr('data-PhotoId');       
+        $.ajax({
+          type: "POST",
+          url: "likePhoto",
+          data: { FarmId : $(this).attr('data-FarmId'), ServerId : $(this).attr('data-ServerId'), PhotoId : $(this).attr('data-PhotoId'), PhotoSecretId : $(this).attr('data-PhotoSecretId') , Like : false }
+        }).done(function() {                  
+          var number = parseInt($($("p." + photoId +".dislikeCount")[0]).html());
+          number = number + 1;
+          $($("p." + photoId+ ".dislikeCount")[0]).html(number);
+          if($('.downvoteMsg').length == 0){
+            $(".secondHeader").prepend('<div class="alert alert-success alert-dismissible successMsg downvoteMsg" role="alert" style="margin-bottom: 0px; ">             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>             You have downvoted a photo successfully!           </div>')
+          }
+        }).fail(function(Error){
+          if($(".failureMsg").length == 0){                 $(".secondHeader").prepend('<div class="alert alert-danger alert-dismissible failureMsg " role="alert">             <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>             Operation failed! Please contact the developer.           </div>');               }
+        });
+      });
+    });      
 
       </script>
     </head>
@@ -108,38 +114,37 @@
 
       <div >
         <div class="secondHeader">                  
-          
+
           <div class="SortDiv">
             <a href="/index?sort=1" class="btn btn-info sort">Sort by Upvotes</a>
             <a href="/index?sort=2" class="btn btn-warning sort">Sort by Downvotes</a>
           </div>
         </div>
-        <div>
-          <ul class="rig">
-            {{#photoLinks}}
-            <li>
-              <div class="divImage">
-                <a href={{FullImage}} class="lightview image" data-lightview-group="thumbnail-demo"  data-lightview-group-options="controls: 'thumbnails'" >            
-                  <img src={{ThumbnailImage}} />                       
-                </a>
-                <div class="votesInfo">
-                  <input type="button" value="Upvotes" class="likeButton btn btn-primary" data-FarmId={{FarmId}} data-ServerId={{ServerId}} data-PhotoId={{PhotoId}} data-PhotoSecretId={{PhotoSecretId}} />
+        
+        <div class="divImagesContainer">
+
+          {{#photoLinks}}
+
+          <div  class="divImage">
+            <a href={{FullImage}} class="lightview image" data-lightview-group="thumbnail-demo"  data-lightview-group-options="controls: 'thumbnails'" data-lightview-caption="Use a caption to give your visitors some more information">  
+              <img src={{ThumbnailImage}} />                      
+            </a> 
+            <div class="votesInfo">
+              <input type="button" value="Upvotes" class="likeButton btn btn-primary" data-FarmId={{FarmId}} data-ServerId={{ServerId}} data-PhotoId={{PhotoId}} data-PhotoSecretId={{PhotoSecretId}} />
               <p class="{{PhotoId}} likeCount lead">{{Upvotes}}</p>
               <input type="button" value="Downvotes" class="dislikeButton btn btn-danger" data-FarmId={{FarmId}} data-ServerId={{ServerId}} data-PhotoId={{PhotoId}} data-PhotoSecretId={{PhotoSecretId}} />              
               <p class="{{PhotoId}} dislikeCount lead">{{Downvotes}}</p>
               <a href="/photoMap?photoId={{PhotoId}}&photoSecretId={{PhotoSecretId}}"><i class="fa fa-map-marker fa-3x"></i></a>
               <button type="button" class="imageInfo btn btn-info btn-xs" style="vertical-align:text-bottom" data-toggle="popover" title="Photo Info" data-PhotoId={{PhotoId}} data-PhotoSecretId={{PhotoSecretId}}  data-content="Loading . . ." >Info</button>
 
-                </div>
-                
-              </div>
-              
-            </li>
-            {{/photoLinks}}
-          </ul>
+            </div>            
+          </div>
+          {{/photoLinks}}          
         </div>
 
+
       </div>
+
       <nav>
         <ul class="pager">
           <li><a href="/index?pageNumber={{pageNumber}}&Latitude={{Latitude}}&Longitude={{Longitude}}">Previous</a></li>

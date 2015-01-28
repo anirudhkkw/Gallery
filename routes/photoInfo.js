@@ -17,7 +17,8 @@ function getPhotoDetails(photoId, photoSecretId, res){
 		flickr.photos.getInfo({
 		  photo_id: photoId,
 		  secret : photoSecretId
-		}, function(err, result) {									
+		}, function(err, result) {		
+			console.log(err);							
 			var photo = result["photo"];
 			var info = "Owner's Name : " + photo["owner"]["realname"] +"</br>" 
 			+ "Title : " + photo["title"]["_content"] + "</br>"

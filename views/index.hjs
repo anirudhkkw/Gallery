@@ -129,15 +129,18 @@
             <a href={{FullImage}} class="lightview image" data-lightview-group="thumbnail-demo"  data-lightview-group-options="controls: 'thumbnails'" data-lightview-caption="Use a caption to give your visitors some more information">  
               <img src={{ThumbnailImage}} />                      
             </a> 
-            <div class="votesInfo">
-              <input type="button" value="Upvotes" class="likeButton btn btn-primary" data-FarmId={{FarmId}} data-ServerId={{ServerId}} data-PhotoId={{PhotoId}} data-PhotoSecretId={{PhotoSecretId}} />
-              <p class="{{PhotoId}} likeCount lead">{{Upvotes}}</p>
-              <input type="button" value="Downvotes" class="dislikeButton btn btn-danger" data-FarmId={{FarmId}} data-ServerId={{ServerId}} data-PhotoId={{PhotoId}} data-PhotoSecretId={{PhotoSecretId}} />              
-              <p class="{{PhotoId}} dislikeCount lead">{{Downvotes}}</p>
-              <a href="/photoMap?photoId={{PhotoId}}&photoSecretId={{PhotoSecretId}}"><i class="fa fa-map-marker fa-3x"></i></a>
-              <button type="button" class="imageInfo btn btn-info btn-xs" style="vertical-align:text-bottom" data-toggle="popover" title="Photo Info" data-PhotoId={{PhotoId}} data-PhotoSecretId={{PhotoSecretId}}  data-content="Loading . . ." >Info</button>
+            <div>
+              <h5 style="margin-bottom:0px"><strong>Lorem ipsum</strong></h5>
+              <p style="margin-bottom:5px">By AvK</p>
+              <p style="padding-bottom:15px;border-bottom: 1px solid #ccc">
+                Neque porro quisquam est qui dolorem</br> ipsum quia dolor sit amet, consectetur, adipisci velit
+              </p>
 
-            </div>            
+            </div>
+            <div class="divider"></div>
+                <input type="button" value="Like" class="likeButton btn btn-primary" style="margin: auto;display: block;" data-FarmId={{FarmId}} data-ServerId={{ServerId}} data-PhotoId={{PhotoId}} data-PhotoSecretId={{PhotoSecretId}} />
+                <p class="{{PhotoId}} likeCount lead" style="margin: auto;display: block;">{{Upvotes}}</p>
+                         
           </div>
           {{/photoLinks}}          
         </div>

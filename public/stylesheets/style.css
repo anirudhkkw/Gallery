@@ -18,7 +18,7 @@ a {
     font-size: 1rem;
     vertical-align: top;
     box-shadow: 0 0 5px #ddd;
-    
+    margin-bottom: 20px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -75,20 +75,19 @@ a {
         height: 70px;
     }
 
-    div.votesInfo a,
-    
-    div.votesInfo input,
-    div.votesInfo p{
-        float: left;
-        margin-top: 5px;
-        padding-right: 10px;
-        padding-left: 10px;
+    ul.votesInfo{
+        list-style-type: none;
+        padding-left: 0px;
+        margin-bottom: 0px;
+        margin-top: 10px;
     }
 
-    div.votesInfo button{
-        float: left;
-        margin: 0 5%;
-        padding-right: 10px;
-        padding-left: 10px;
+    ul.votesInfo li{
+        display: inline-block;
+    } 
+    .divImage img{
+        
+        display: block;
+        
     }
-    
+

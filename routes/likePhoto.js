@@ -1,6 +1,7 @@
 	var express = require('express');
 	var router = express.Router();
 	var FlickrPhotos = require('../models/flickrphoto.js');
+	var go2js = require("node-go2js");
 
 	router.post('/', function(req, res, next) {
 		try{			

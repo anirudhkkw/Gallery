@@ -2,7 +2,6 @@
 	var router = express.Router();
 	var FlickrPhotos = require('../models/flickrphoto.js');
 	var flickrHelper = require('../helper/helper.js');
-	var go2js = require("node-go2js");
 
 	/* GET home page. */
 	router.get('/', function(req, res, next) {	

@@ -26,3 +26,7 @@ APIs used :
 Future enhancements :
 1) implement searching for an term on grid
 2) more interesting features coming up ;)g
+
+How to Run : 
+1) Make sure you have started Mongod on local and created "FlickrDb" db ("make FlickrDb" in mongo shell)
+2) "node bin/www" to run the webapp

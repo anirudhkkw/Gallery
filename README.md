@@ -1,4 +1,4 @@
-# BigTree
+# Gallery
 Gallery of photos
 Features :
 1) displays pictures of cute puppies
